@@ -1,0 +1,81 @@
+CREATE DATABASE mydb;
+USE mydb;
+
+CREATE TABLE Branch
+(
+branchNo VARCHAR (255) PRIMARY KEY,
+street VARCHAR(255),
+city VARCHAR(255),
+postcode VARCHAR(255)
+);
+
+CREATE TABLE Staff
+(
+staffNo VARCHAR (255) PRIMARY KEY,
+fName VARCHAR(255),
+lName VARCHAR(255),
+position VARCHAR(255),
+sex char,
+DOb DATE,
+salary INT(8),
+branchNo VARCHAR(255)
+);
+
+CREATE TABLE propertyForRent
+(
+propertyNo VARCHAR (255) ,
+street VARCHAR(255),
+city VARCHAR(255),
+postcode VARCHAR(255),
+type VARCHAR(30),
+rooms INT(2),
+rent INT(50),
+ownerNo VARCHAR(30),
+staffNo VARCHAR(30),
+branchNo VARCHAR(30)
+);
+
+CREATE TABLE Client
+(
+clientNo VARCHAR (255) PRIMARY KEY,
+fName VARCHAR(255),
+lName VARCHAR(255),
+telNo VARCHAR(255),
+preftype VARCHAR(30),
+maxRent INT(8)
+);
+
+CREATE TABLE PrivateOwner
+(
+ownerNo VARCHAR (255) PRIMARY KEY ,
+fName VARCHAR(255),
+lName VARCHAR(255),
+address VARCHAR(255),
+telNo VARCHAR(255)
+);
+
+CREATE TABLE Viewing
+(
+clientNo VARCHAR (255) ,
+propertyNo VARCHAR(255) ,
+viewDate DATE,
+comment VARCHAR(255),
+CONSTRAINT PRIMARY KEY (clientNo,propertyNo)
+);
+
+CREATE TABLE Registration
+(
+clientNo VARCHAR (255) ,
+branchNo VARCHAR(255) ,
+staffNo VARCHAR(50) ,
+dateJoined DATE,
+CONSTRAINT PRIMARY KEY (clientNo , branchNo , staffNo)
+);
+
+INSERT INTO Branch 
+VALUES ('B005', '28 Link road', 'Lahore', 'V2S18');
+
+INSERT INTO Client 
+VALUES (NULL, 'Hira', 'Faisal', '0337 2414981', 'Flat', 243);
+
+DELETE FROM Staff WHERE StaffNo = 'SG37';
